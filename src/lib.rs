@@ -11,7 +11,7 @@ pub struct BufferedImage {
 impl BufferedImage {
     pub fn new(width: usize, height: usize) -> Self {
         Self {
-            buffer: Vec::with_capacity(width * height * 4),
+            buffer: iter::repeat(0).take(width * height * 4).collect(),
             width,
             height,
         }
