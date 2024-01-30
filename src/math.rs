@@ -17,7 +17,7 @@ impl<F: Fn(isize) -> Y, Y> ShapeEquation<F, Y>
 where
     Coord: From<Y>,
 {
-    pub fn into_points<'a>(self, step: usize) -> Vec<Coord> {
+    pub fn into_points(self, step: usize) -> Vec<Coord> {
         match self {
             ShapeEquation::Linear { domain, y } => {
                 let steps = domain.step_by(step);

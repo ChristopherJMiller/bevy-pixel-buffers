@@ -46,9 +46,9 @@ pub fn rounded_rectangle(b: isize, a: isize, r: isize, fidelity: usize) -> Vec<C
                 2 => -(a - r) * (2.0 * t - 5.0),
                 3 => -a + r - r * (0.5 * PI * (t - 3.0)).sin(),
                 4 => -a,
-                5 => -a + r - r as f32 * (0.5 * PI * (t as f32 - 5.0)).cos(),
+                5 => -a + r - r * (0.5 * PI * (t - 5.0)).cos(),
                 6 => (a - r) * (2.0 * t - 13.0),
-                7 => a - r + r * (0.5 * PI * (t as f32 - 7.0)).sin(),
+                7 => a - r + r * (0.5 * PI * (t - 7.0)).sin(),
                 _ => 0.0,
             }
             .round() as isize;
