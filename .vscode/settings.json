@@ -1,7 +1,4 @@
 {
     "nixEnvSelector.suggestion": false,
-    "nixEnvSelector.nixFile": "${workspaceRoot}/shell.nix",
-    "rust-analyzer.cargo.features": [
-        "shapes"
-    ]
+    "nixEnvSelector.nixFile": "${workspaceRoot}/shell.nix"
 }

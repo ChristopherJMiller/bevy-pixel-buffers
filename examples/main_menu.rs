@@ -9,7 +9,7 @@ fn main() {
         .add_plugins(DefaultPlugins)
         .add_plugins(BufferedImageUpdatePlugin)
         .add_systems(Startup, setup)
-        //.add_systems(Update, update_time_on_button)
+        .add_systems(Update, update_time_on_button)
         .run();
 }
 
@@ -19,7 +19,7 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     let mut buffered_image = BufferedImage::new(256, 128);
     let mut graphics = buffered_image.graphics().unwrap();
 
-    button(&mut graphics, "Play", 255, 64, 25);
+    button(&mut graphics, "Play", 255, 64, 5);
 
     commands
         .spawn(SpriteBundle {
@@ -36,17 +36,15 @@ fn update_time_on_button(time: Res<Time>, mut query: Query<&mut BufferedImage>) 
         button(
             &mut graphics,
             &time.elapsed_seconds_f64().floor().to_string(),
-            256,
+            255,
             32,
-            5,
+            ((1.0 * time.elapsed_seconds_f64().floor()).round() as isize).min(16),
         );
     });
 }
 
 fn button(graphics: &mut Graphics, text: &str, width: isize, height: isize, radius: isize) {
     let points_list = rounded_rectangle(width / 2, height / 2, radius, 2);
-
-    info!("{:?}", points_list);
 
     let polygon = graphics_shapes::polygon::Polygon::from_points(&points_list);
 
